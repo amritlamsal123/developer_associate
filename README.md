@@ -24,6 +24,12 @@
 #### GetItem
   * The GetItem operation returns a set of attributes for the item with the given primary key. If there is no matching item, GetItem does not return any data and there will be no Item element in the response.
   * GetItem provides an eventually consistent read by default. If your application requires a strongly consistent read, set ConsistentRead to true
+#### Query
+  * The Query operation finds items based on primary key values. You can query any table or secondary index that has a composite primary key (a partition key and a sort key).
+  * The Query operation will return all of the items from the table or index with that partition key value. You can optionally narrow the scope of the Query operation by specifying a sort key value and a comparison operator in KeyConditionExpression.
+  * Query results are always sorted by the sort key value. If the data type of the sort key is Number, the results are returned in numeric order; otherwise, the results are returned in order of UTF-8 bytes. By default, the sort order is ascending. To reverse the order, set the ScanIndexForward parameter to false.
+  *  To further refine the Query results, you can optionally provide a FilterExpression. A FilterExpression determines which items within the results should be returned to you
+  * FilterExpression is applied after a Query finishes, but before the results are returned. A FilterExpression cannot contain partition key or sort key attributes. You need to specify those attributes in the KeyConditionExpression.
 ### Errors 
 #### ProvisionedThroughputExceededException
   * Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce the frequency of requests and **use exponential backoff**. HTTP Status Code: 400
@@ -53,4 +59,16 @@ Length Constraints: Minimum length of 3. Maximum length of 255.
 Pattern: [a-zA-Z0-9_.-]+
 
 Required: Yes
+## Secondary Index
+  * A secondary index is a data structure that contains a subset of attributes from a table, along with an alternate key to support Query operations. You can retrieve data from the index using a Query, in much the same way as you use Query with a table. A table can have multiple secondary indexes, which gives your applications access to many different query patterns.
+#### Local Secondary Index
+  * must be created during the table creation
+  * must have the same partition key as the table but can have different sort key
+  * uses the throughput of the table
+  * max 5 per table
+#### Global Secondary Index
+  * can be created during or after table creation
+  * can have different partition key and/or different sort key.
+  * requires additional throughput for the index specifically
+  * max 5 per table
   
