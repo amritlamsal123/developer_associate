@@ -8,6 +8,8 @@
   * gurantees delivery order of message/tasks.
 #### How long can workflow executions run
   * Each workflow execution can run for a maximum of 1 year. Each workflow execution history can grow up to 25,000 events.
+#### Developing Deciders in Amazon SWF
+  * A decider is an implementation of the **coordination logic** of your workflow type that runs during the execution of your workflow. You can run multiple deciders for a single workflow type.
 # SNS
   * The various SNS endpoints for northern virginia:
     * US-East-1 (Virginia): http://sns.us-east-1.amazonaws.com 
@@ -21,6 +23,8 @@ arn:aws:sns:us-east-1:1234567890123456:mytopic
   * Token included in the confirmation message sent to end-points on a subscription request are valid for 3 days.
 #### Can a message be deleted after being published?
   * No, once a message has been successfully published to a topic, it cannot be recalled.
+#### Does Amazon SNS provide at-least-once message delivery to Amazon SQS queue?
+  * Yes, Amazon SNS gurantees that each message is delivered to Amazon SQS at least once. 
 
 # Dynamo DB
 #### Primary key
