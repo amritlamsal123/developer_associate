@@ -63,7 +63,7 @@ Required: Yes
   * A secondary index is a data structure that contains a subset of attributes from a table, along with an alternate key to support Query operations. You can retrieve data from the index using a Query, in much the same way as you use Query with a table. A table can have multiple secondary indexes, which gives your applications access to many different query patterns.
 #### Local Secondary Index
   * must be created during the table creation
-  * must have the same partition key as the table but can have different sort key
+  * must have the same partition key as primary key but can have different sort key
   * uses the throughput of the table
   * max 5 per table
 #### Global Secondary Index
