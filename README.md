@@ -5,6 +5,23 @@
 #### Maximum number of SWF domains allowed in an AWS account is 100
   * You can have a maximum of 10,000 workflow and activity types (in total) that are either registered or depreciated in each domain. 
   * You can have a maximum of 100 Amazon SWF domains(including registered and depreciated domains) in your AWS account. 
+  * gurantees delivery order of message/tasks.
+#### How long can workflow executions run
+  * Each workflow execution can run for a maximum of 1 year. Each workflow execution history can grow up to 25,000 events.
+# SNS
+  * The various SNS endpoints for northern virginia:
+    * US-East-1 (Virginia): http://sns.us-east-1.amazonaws.com 
+#### What is the format of an Amazon SNS topic?
+  * Topic names are limited to 256 characters. Alphanumeric characters plus hyphens (-) and underscores (_) are allowed. Topic names must be unique within an AWS account. After you delete a topic, you can reuse the topic name.
+  * When a topic is created, Amazon SNS will assign a unique ARN (Amazon Resource Name) to the topic
+  * The following is the ARN for a topic named “mytopic” created by a user with the AWS account ID “123456789012” and hosted in the US East region:
+
+arn:aws:sns:us-east-1:1234567890123456:mytopic 
+#### How long will subscription requests remain pending, while waiting to be confirmed?
+  * Token included in the confirmation message sent to end-points on a subscription request are valid for 3 days.
+#### Can a message be deleted after being published?
+  * No, once a message has been successfully published to a topic, it cannot be recalled.
+
 # Dynamo DB
 #### Primary key
   * An example of a good primary key is CustomerID or User_ID if the application has many customers requests made to various customers records tend to be more or less uniform. 
@@ -71,4 +88,27 @@ Required: Yes
   * can have different partition key and/or different sort key.
   * requires additional throughput for the index specifically
   * max 5 per table
+#### How many secondary indexs are allowed per table
+  * 10 ( 5 local and 5 global) per table.
+#### How can you increase your DynamoDB secondary index limit in a region?
+  * DynamoDB does not allow secondary index limit increase
+#### Conditional Writes
+  * Conditional writes are helpful in cases where multiple users attempt to modify the same item. 
+#### Data types that can be indexed in DynamoDB table?
+  * Number, String, Binary and Boolean can be used for sort key element of the local secondary index.
+  * Set, list and map types cannot be indexed
+#### What is maximum limit of size of an item collection in DynamoDB?
+  * 10 GB
+#### What is smallest amount of reserved capacity that can be purchased for DynamoDB?
+  * 100
+#### KeyConditionExpression parameter
+  * expressions can be used as part of the Query API call in DynamoDB to filter results based on values of primary keys on a table using KeyConditionExpression parameter.
+#### DynamoDB  stores from 1 byte upto 400KB; S3 stores upto 5TB
+#### There is no limit on number of attributes an item can have in DynamoDB
+#### DynamoDB API
+  * CreateTable
+  * DescribeTable
+  * ListTables
+  * UpdateTable
+  * DeleteTable
   
