@@ -115,4 +115,19 @@ Required: Yes
   * ListTables
   * UpdateTable
   * DeleteTable
-  
+# CloudFormation 
+#### Fn::GetAtt
+  * The Fn::GetAtt intrinsic function returns the value of an attribute from a resource in the template.
+#### AWS::SNS::Subscription
+  * The AWS::SNS::Subscription resource subscribes an endpoint to an Amazon Simple Notification Service (Amazon SNS) topic. The owner of the endpoint must confirm the subscription before Amazon SNS creates the subscription.
+
+#### Explanation of following cloudformation template
+    * "SNSTopic": {
+        "Type":"AWS::SNS::Topic",
+        "Properties":{
+          "Subscription":[{
+            "Protocol":"sqs";
+            "Endpoint":{"Fn::GetAtt":["SQSQueue","Arn"]}
+            }]
+      }
+      --Creates an SNS topic and adds a subscription ARN endpoint for SQS resource created under the logical name SQSQueue
