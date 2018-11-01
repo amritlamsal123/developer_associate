@@ -2,15 +2,23 @@
 #### SQS gurantees delivery but there can be duplicates
   * SQS requires you to implement your own application-level tracking, especially if your application uses multiple queues.
 # SWF
+#### Programming language SDK's available for SWF
+  * Java, Ruby, .NET and PHP
+####  Can I use AWS Identity and Access Management (IAM) to manage access to Amazon SWF? 
+  * Yes. You can grant IAM users permission to access Amazon SWF. IAM users can only access the SWF domains and APIs that you specify.
 #### Maximum number of SWF domains allowed in an AWS account is 100
   * You can have a maximum of 10,000 workflow and activity types (in total) that are either registered or depreciated in each domain. 
   * You can have a maximum of 100 Amazon SWF domains(including registered and depreciated domains) in your AWS account. 
   * gurantees delivery order of message/tasks.
 #### How long can workflow executions run
   * Each workflow execution can run for a maximum of 1 year. Each workflow execution history can grow up to 25,000 events.
+#### In SWF what are the containers called for segregating application resources.
+  * Domains
+    * In SWF, you define logical containers called domains for your application resources. Domains can only be created at the level of your AWS account and may not be nested
 #### Developing Deciders in Amazon SWF
   * A decider is an implementation of the **coordination logic** of your workflow type that runs during the execution of your workflow. You can run multiple deciders for a single workflow type.
 #### Some core benefits of SWF
+  * One of the major use case of SWF is video encoding
   * Centralize the coordination of steps in the application
   * Automate the workflow that include human tasks
   * Manage the flow of work between application components
@@ -145,6 +153,7 @@ Required: Yes
 #### Note: There is no limit to the number of templates. Each AWS CloudFormation account is limited to a maximum of 200 stacks. Contact AWS for higher limit, request will be responded within 2 business days.
 #### Note: You can use AWS CloudFormation Template to Create a Topic that Sends Messages to Amazon SQS Queues
 #### Note: Resource is only Mandatory field of the 6 available sections on a CloudFormation template ( Template Decription Declaration, Template Format Version Declaration, Parameters, Resources, Mappings, Outputs)
+#### Note: CloudFormation can be used with both Chef and Puppet
 #### Format Version
   * The AWSTemplateFormatVersion section (optional) identifies the capabilities of the template. The latest template format version is 2010-09-09 and is currently the only valid value.
   * If you don't specify a value, AWS CloudFormation assumes the latest template format version
@@ -174,5 +183,10 @@ Required: Yes
   * You can use two AWS CLI commands to get information about your AWS CloudFormation stacks: aws cloudformation list-stacks and aws cloudformation describe-stacks.
 #### Default behavior of a CloudFormation stack if creation fails
   * Rollback
+#### Delete Your Stacks But Keep Your Data
+  * "myS3Bucket" : {
+  "Type" : "AWS::S3::Bucket",
+  "DeletionPolicy" : "Retain"
+}
   
 
