@@ -10,6 +10,12 @@
   * Each workflow execution can run for a maximum of 1 year. Each workflow execution history can grow up to 25,000 events.
 #### Developing Deciders in Amazon SWF
   * A decider is an implementation of the **coordination logic** of your workflow type that runs during the execution of your workflow. You can run multiple deciders for a single workflow type.
+#### Some core benefits of SWF
+  * Centralize the coordination of steps in the application
+  * Automate the workflow that include human tasks
+  * Manage the flow of work between application components
+  * Integrate a range of programs and components 
+  * help developers use asynchronous programming in the development of their applications
 # SNS
   * The various SNS endpoints for northern virginia:
     * US-East-1 (Virginia): http://sns.us-east-1.amazonaws.com 
@@ -131,3 +137,42 @@ Required: Yes
             }]
       }
       --Creates an SNS topic and adds a subscription ARN endpoint for SQS resource created under the logical name SQSQueue
+ #### Fn::Join
+   * { "Fn::Join" : [ "delimiter", [ comma-delimited list of values ] ] 
+   * for ex: The following example returns: "a:b:c".
+     * "Fn::Join" : [ ":", [ "a", "b", "c" ] ]
+#### Note: CloudFormation assume default template version if one is not explicitly mentioned in a CloudFormation template.
+#### Note: There is no limit to the number of templates. Each AWS CloudFormation account is limited to a maximum of 200 stacks. Contact AWS for higher limit, request will be responded within 2 business days.
+#### Note: You can use AWS CloudFormation Template to Create a Topic that Sends Messages to Amazon SQS Queues
+#### Note: Resource is only Mandatory field of the 6 available sections on a CloudFormation template ( Template Decription Declaration, Template Format Version Declaration, Parameters, Resources, Mappings, Outputs)
+#### Format Version
+  * The AWSTemplateFormatVersion section (optional) identifies the capabilities of the template. The latest template format version is 2010-09-09 and is currently the only valid value.
+  * If you don't specify a value, AWS CloudFormation assumes the latest template format version
+#### AWS API REFERENCE
+  * https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/Welcome.html
+#### CloudFormation Helper Scripts Reference
+  * AWS CloudFormation provides the following Python helper scripts that you can use to install software and start services on an Amazon EC2 instance that you create as part of your stack. 
+#### Parameters
+  * Use the optional Parameters section to customize your templates. Parameters enable you to input custom values to your template each time you create or update a stack.
+#### Supported AWS-Specific Parameter Types
+  * ex: AWS::EC2::KeyPair::KeyName
+    * An Amazon EC2 key pair name
+#### Referencing a Parameter within a Template
+  * You use the Ref intrinsic function to reference a parameter, and AWS CloudFormation uses the parameter's value to provision the stack. You can reference parameters from the Resources and Outputs sections of the same template.
+#### Intrinsic Function Reference 
+  * AWS CloudFormation provides several built-in functions that help you manage your stacks. Use intrinsic functions in your templates to assign values to properties that are not available until runtime.
+  * You can use intrinsic functions only in specific parts of a template. Currently, you can use intrinsic functions in resource properties, outputs, metadata attributes, and update policy attributes. You can also use intrinsic functions to conditionally create stack resources. Ex: Fn:GetAtt, Fn:Join, Ref, etc. 
+#### Creating an Amazon S3 Bucket with Defaults
+  * This example uses a AWS::S3::Bucket to create a bucket with default settings.
+    * "myS3Bucket" : {
+      "Type" : "AWS::S3::Bucket"
+      }
+#### Access Control List (ACL) Overview
+  * When you create a bucket or an object, Amazon S3 creates a default ACL that grants the resource owner full control over the resource.
+  * Amazon S3 access control lists (ACLs) enable you to manage access to buckets and objects. Each bucket and object has an ACL attached to it as a subresource. It defines which AWS accounts or groups are granted access and the type of access. When a request is received against a resource, Amazon S3 checks the corresponding ACL to verify that the requester has the necessary access permissions.
+#### Describing and Listing Your Stacks
+  * You can use two AWS CLI commands to get information about your AWS CloudFormation stacks: aws cloudformation list-stacks and aws cloudformation describe-stacks.
+#### Default behavior of a CloudFormation stack if creation fails
+  * Rollback
+  
+
