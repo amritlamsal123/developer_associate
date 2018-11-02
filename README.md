@@ -6,6 +6,8 @@
 #### How do I configure the maximum message size for Amazon SQS?
   * limit to a value between 1,024 bytes (1 KB), and 262,144 bytes (256 KB).
   * To send messages larger than 256 KB, use the Amazon SQS Extended Client Library for Java. 
+#### How do I configure Amazon SQS to support longer message retention?
+  * You can use the MessageRetentionPeriod attribute to set the message retention period from 60 seconds (1 minute) to 1,209,600 seconds (14 days)
 # SWF
 #### Programming language SDK's available for SWF
   * Java, Ruby, .NET and PHP
@@ -222,7 +224,7 @@ Required: Yes
   * The largest object that can be uploaded in a single PUT is 5GB
   * For objects larger than 100MB, use Multipart upload
 #### Default limit in S3 bucket
-  * Account can have a maximum of 100 buckets.
+  * Account(NOT Region) can have a maximum of 100 buckets. BUt you can increase the limit by contacting AWS.
 # EC2
 #### If software-based load tester's traffic is hitting only the instance in one AZ among 2 AZ.
   * Force the software-based load tester to re-resolve DNS before every request
