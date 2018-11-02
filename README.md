@@ -6,6 +6,7 @@
 #### How do I configure the maximum message size for Amazon SQS?
   * limit to a value between 1,024 bytes (1 KB), and 262,144 bytes (256 KB).
   * To send messages larger than 256 KB, use the Amazon SQS Extended Client Library for Java. 
+  * For size over 256 KB, store the information in S3 and attach retrieval information to the message for the application to process.
 #### How do I configure Amazon SQS to support longer message retention?
   * You can use the MessageRetentionPeriod attribute to set the message retention period from 60 seconds (1 minute) to 1,209,600 seconds (14 days)
 # SWF
@@ -36,6 +37,8 @@
 # SNS
   * The various SNS endpoints for northern virginia:
     * US-East-1 (Virginia): http://sns.us-east-1.amazonaws.com 
+#### What are appropriate ways for you to provide timely, device-specific instructions to end users when annoncing this downtime?
+  * Send a single message, but customize the text in the SNS message field so that each device gets only the information that is appropriate for them.
 #### What is the format of an Amazon SNS topic?
   * Topic names are limited to 256 characters. Alphanumeric characters plus hyphens (-) and underscores (_) are allowed. Topic names must be unique within an AWS account. After you delete a topic, you can reuse the topic name.
   * When a topic is created, Amazon SNS will assign a unique ARN (Amazon Resource Name) to the topic
@@ -50,6 +53,7 @@ arn:aws:sns:us-east-1:1234567890123456:mytopic
   * Yes, Amazon SNS gurantees that each message is delivered to Amazon SQS at least once. 
 
 # Dynamo DB
+#### NOTE: An item is a collection of attributes. Each attributes has a name and value. An attribute value can be a scalar, a set, or a document type.
 #### Primary key
   * An example of a good primary key is CustomerID or User_ID if the application has many customers requests made to various customers records tend to be more or less uniform. 
   * An example of a heavily skewed primary key is "Product Category Name" where certain product categories are more popular than the rest. 
@@ -125,7 +129,9 @@ Required: Yes
   * 10 ( 5 local and 5 global) per table.
 #### How can you increase your DynamoDB secondary index limit in a region?
   * DynamoDB does not allow secondary index limit increase
-
+#### NOTE: You cannot create more than one table with a secondary index at a time.
+#### GSI (Global Secondary Index):
+  * A GSI is an index with a hash and range key that can be different from those on the table. 
 #### Data types that can be indexed in DynamoDB table?
   * Number, String, Binary and Boolean can be used for sort key element of the local secondary index.
   * Set, list and map types cannot be indexed
@@ -135,6 +141,11 @@ Required: Yes
   * 100
 #### KeyConditionExpression parameter
   * expressions can be used as part of the Query API call in DynamoDB to filter results based on values of primary keys on a table using KeyConditionExpression parameter.
+#### You're using a CloudFormation template to build out staging environments. What section of the CloudFormation would you edit in order to allow the user to specify the PEM key-name at start time?
+  * Parameter Section
+  * Use the optional Parameters section to customize your templates. Parameters enable you to input custom values to your template each time you create or update a stack
+#### What would you set in CloudFormation template to fire up different instance sizes based off environment type? i.e. ( If this is for prod, use m1.large instead of t1.micro)
+  * Conditions
 #### DynamoDB  stores from 1 byte upto 400KB; S3 stores upto 5TB
 #### Read Consistency
   * DynamoDB uses eventually consistent reads, unless you specify otherwise. Read operations (such as GetItem, Query, and Scan) provide a ConsistentRead parameter. If you set this parameter to true, DynamoDB uses strongly consistent reads during the operation.
@@ -144,6 +155,15 @@ Required: Yes
   * By default, the DynamoDB write operations (PutItem, UpdateItem, DeleteItem) are unconditional: each of these operations will overwrite an existing item that has the specified primary key.
   * Conditional writes are helpful in cases where multiple users attempt to modify the same item. 
 #### There is no limit on number of attributes an item can have in DynamoDB
+#### CloudFormation stack deloys to "Rollback" if it is not going to work at time of creation:
+  * A subnet specified in the template does not exist
+  * An AMI specified in the template exist in a different region than one in which the stack is deployed
+  * The template specifies an instance-store backed AMI and an incompatible EC2 instance type. 
+    * NOTE: If we are encountering a JSON syntax error, it will return a template validation error prior to the creation and deployment of resource itself. se
+#### Optimistic Locking With Version Number
+  * Optimistic locking is a strategy to ensure that the client-side item that you are updating (or deleting) is the same as the item in DynamoDB. If you use this strategy, then your database writes are protected from being overwritten by the writes of others — and vice-versa.
+  * Optimistic locking prevents you from accidentally overwriting changes that were made by others; it also prevents others from accidentally overwriting your changes.
+  * To support optimistic locking, the AWS SDK for Java provides the @DynamoDBVersionAttribute annotation. In the mapping class for your table, you designate one property to store the version number, and mark it using this annotation
 #### DynamoDB API
   * CreateTable
   * DescribeTable
@@ -213,10 +233,11 @@ Required: Yes
   "Type" : "AWS::S3::Bucket",
   "DeletionPolicy" : "Retain"
 }
-## S3
+# S3
 #### Policy in S3 bucket
   * When defining policy in s3 bucket as cloudformation template, note policy consists of 4 sections: Resource, action, effect and principal
 #### S3 handles error codes with HTTP responses.
+#### Note: Multi-part upload API allows you to stop and resume uploads.
 #### Introducing randomness to key name
   * Add a hash string as prefix to key name. Ex: examplebucket/232a-2013-26-05-15-00-00/myfolder234234/photo1.jpg
 #### Max size of S3 object
@@ -225,11 +246,28 @@ Required: Yes
   * For objects larger than 100MB, use Multipart upload
 #### Default limit in S3 bucket
   * Account(NOT Region) can have a maximum of 100 buckets. BUt you can increase the limit by contacting AWS.
+#### if you receive s3 API: 403 forbidden
+  * AccessDenied
+#### HTTP 404
+  * NoSuchBucket
+  * NoSuchKey
+  * NoSuchLifecycleConfiguration
+  * NoSuchUpload
+  * NoSuchVersion
+#### Note: S3 bucket ownership is not transferrable. The resourse owner can optionally grant access permissions to others by writing an access policy.
+#### Note: S3 coupled with Route53 Alias record supports buckets like mydomain.com, example.mydomain.com, and www.mydomain.com.
 # EC2
 #### If software-based load tester's traffic is hitting only the instance in one AZ among 2 AZ.
   * Force the software-based load tester to re-resolve DNS before every request
   * Use a third party load-testing service to send requests from globally distributed clients
 #### DescribeImages
   * find out AMIs that are available for you to use in given region.
+#### Which API call would you use to attach an EBS volume to an EC2 instance?
+  * AttachVolume
+# IAM
+#### Identity Providers and Federation
+  * If you already manage user identities outside of AWS, you can use IAM identity providers instead of creating IAM users in your AWS account
+  * To use an IdP, you create an IAM identity provider entity to establish a trust relationship between your AWS account and the IdP. IAM supports IdPs that are compatible with OpenID Connect (OIDC) or SAML 2.0 (Security Assertion Markup Language 2.0).
+  
   
 
