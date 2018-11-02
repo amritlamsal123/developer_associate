@@ -1,6 +1,11 @@
 # SQS
 #### SQS gurantees delivery but there can be duplicates
   * SQS requires you to implement your own application-level tracking, especially if your application uses multiple queues.
+#### Default visibility timeout for SQS queue in seconds?
+  * 30 seconds
+#### How do I configure the maximum message size for Amazon SQS?
+  * limit to a value between 1,024 bytes (1 KB), and 262,144 bytes (256 KB).
+  * To send messages larger than 256 KB, use the Amazon SQS Extended Client Library for Java. 
 # SWF
 #### Programming language SDK's available for SWF
   * Java, Ruby, .NET and PHP
@@ -118,8 +123,7 @@ Required: Yes
   * 10 ( 5 local and 5 global) per table.
 #### How can you increase your DynamoDB secondary index limit in a region?
   * DynamoDB does not allow secondary index limit increase
-#### Conditional Writes
-  * Conditional writes are helpful in cases where multiple users attempt to modify the same item. 
+
 #### Data types that can be indexed in DynamoDB table?
   * Number, String, Binary and Boolean can be used for sort key element of the local secondary index.
   * Set, list and map types cannot be indexed
@@ -130,6 +134,13 @@ Required: Yes
 #### KeyConditionExpression parameter
   * expressions can be used as part of the Query API call in DynamoDB to filter results based on values of primary keys on a table using KeyConditionExpression parameter.
 #### DynamoDB  stores from 1 byte upto 400KB; S3 stores upto 5TB
+#### Read Consistency
+  * DynamoDB uses eventually consistent reads, unless you specify otherwise. Read operations (such as GetItem, Query, and Scan) provide a ConsistentRead parameter. If you set this parameter to true, DynamoDB uses strongly consistent reads during the operation.
+  * All reads of DynamoDB table are not subject to eventual consistency.
+  * Read requests are eventually consistent unless otherwise specified. 
+#### Conditional Writes
+  * By default, the DynamoDB write operations (PutItem, UpdateItem, DeleteItem) are unconditional: each of these operations will overwrite an existing item that has the specified primary key.
+  * Conditional writes are helpful in cases where multiple users attempt to modify the same item. 
 #### There is no limit on number of attributes an item can have in DynamoDB
 #### DynamoDB API
   * CreateTable
@@ -212,6 +223,11 @@ Required: Yes
   * For objects larger than 100MB, use Multipart upload
 #### Default limit in S3 bucket
   * Account can have a maximum of 100 buckets.
-#### 
-
+# EC2
+#### If software-based load tester's traffic is hitting only the instance in one AZ among 2 AZ.
+  * Force the software-based load tester to re-resolve DNS before every request
+  * Use a third party load-testing service to send requests from globally distributed clients
+#### DescribeImages
+  * find out AMIs that are available for you to use in given region.
+  
 
