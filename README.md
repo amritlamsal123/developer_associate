@@ -17,6 +17,8 @@
     * In SWF, you define logical containers called domains for your application resources. Domains can only be created at the level of your AWS account and may not be nested
 #### Developing Deciders in Amazon SWF
   * A decider is an implementation of the **coordination logic** of your workflow type that runs during the execution of your workflow. You can run multiple deciders for a single workflow type.
+#### True about SWF
+  * Human can perform an activity task, but not decision task. 
 #### Some core benefits of SWF
   * One of the major use case of SWF is video encoding
   * Centralize the coordination of steps in the application
@@ -44,6 +46,12 @@ arn:aws:sns:us-east-1:1234567890123456:mytopic
 #### Primary key
   * An example of a good primary key is CustomerID or User_ID if the application has many customers requests made to various customers records tend to be more or less uniform. 
   * An example of a heavily skewed primary key is "Product Category Name" where certain product categories are more popular than the rest. 
+#### Which DynamoDB API call doesn't consume capacity units?
+  * UpdateTable
+#### Throughput capacity for Reads and Writes
+  * When you create a table or index in Amazon DynamoDB, you must specify your capacity requirements for read and write activity
+  * One read capacity unit represents one strongly consistent read per second, or two eventually consistent reads per second, for an item up to 4 KB in size. If you need to read an item that is larger than 4 KB, DynamoDB will need to consume additional read capacity units. The total number of read capacity units required depends on the item size, and whether you want an eventually consistent or strongly consistent read.
+  * One write capacity unit represents one write per second for an item up to 1 KB in size. If you need to write an item that is larger than 1 KB, DynamoDB will need to consume additional write capacity units. The total number of write capacity units required depends on the item size.
 #### Atomic Counter
   * allows all write requests to be applied in the order they are recieved by incrementing or decrementing the attribute value
 #### Tables limit in AWS accout
@@ -132,6 +140,8 @@ Required: Yes
 # CloudFormation 
 #### Fn::GetAtt
   * The Fn::GetAtt intrinsic function returns the value of an attribute from a resource in the template.
+#### Query an item by it's primary key
+  * GetItem
 #### AWS::SNS::Subscription
   * The AWS::SNS::Subscription resource subscribes an endpoint to an Amazon Simple Notification Service (Amazon SNS) topic. The owner of the endpoint must confirm the subscription before Amazon SNS creates the subscription.
 
@@ -149,6 +159,8 @@ Required: Yes
    * { "Fn::Join" : [ "delimiter", [ comma-delimited list of values ] ] 
    * for ex: The following example returns: "a:b:c".
      * "Fn::Join" : [ ":", [ "a", "b", "c" ] ]
+#### Ref
+  * When you pass the logical ID of an AWS::EC2::Instance object to the intrinsic Ref function, the object's InstanceId is returned. For example: i-1234567890abcdef0.
 #### Note: CloudFormation assume default template version if one is not explicitly mentioned in a CloudFormation template.
 #### Note: There is no limit to the number of templates. Each AWS CloudFormation account is limited to a maximum of 200 stacks. Contact AWS for higher limit, request will be responded within 2 business days.
 #### Note: You can use AWS CloudFormation Template to Create a Topic that Sends Messages to Amazon SQS Queues
@@ -188,5 +200,18 @@ Required: Yes
   "Type" : "AWS::S3::Bucket",
   "DeletionPolicy" : "Retain"
 }
-  
+## S3
+#### Policy in S3 bucket
+  * When defining policy in s3 bucket as cloudformation template, note policy consists of 4 sections: Resource, action, effect and principal
+#### S3 handles error codes with HTTP responses.
+#### Introducing randomness to key name
+  * Add a hash string as prefix to key name. Ex: examplebucket/232a-2013-26-05-15-00-00/myfolder234234/photo1.jpg
+#### Max size of S3 object
+  * 5 TB
+  * The largest object that can be uploaded in a single PUT is 5GB
+  * For objects larger than 100MB, use Multipart upload
+#### Default limit in S3 bucket
+  * Account can have a maximum of 100 buckets.
+#### 
+
 
