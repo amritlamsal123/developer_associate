@@ -4,6 +4,7 @@
        AWS SDK for Java, .NET, PHP
        REST API
        AWS Management Console
+     * S3 server side encryption uses AES-256
 #### Protecting Data Using Server-Side Encryption with Amazon S3-Managed Encryption Keys (SSE-S3)
   * Server-side encryption protects data at rest. Server-side encryption with Amazon S3-managed encryption keys (SSE-S3) uses strong multi-factor encryption. Amazon S3 encrypts each object with a unique key. As an additional safeguard, it encrypts the key itself with a master key that it rotates regularly. Amazon S3 server-side encryption uses one of the strongest block ciphers available, 256-bit Advanced Encryption Standard (AES-256), to encrypt your data.
   * You can't enforce SSE-S3 encryption on objects that are uploaded using presigned URLs. You can specify server-side encryption only with the AWS Management Console or an HTTP request header. 
@@ -68,5 +69,18 @@
   * Jave, .NET, Node.js, PHP, Python, Ruby, Go, C++, and AWS Mobile SDK
 #### What HTTP response code indicates that an AWS API was successful.
   * 200
-  
+#### While debugging problem in Amazon DynamoDB:
+  * Use the AWS CLI to query the DynamoDB table and data
+  * Use the AWS Console to view the DynamoDB table and data
+#### Which of the following are actors in Amazon SWF workflow:
+  * Decider
+  * Activity Worker
+  * Workflow starter( is the first task of the workflow)
+#### Suitable for 2-tier, higly available web application, durable storage for static content while utilizing lower Overall CPU resources for the web tier
+  * S3
+#### AWS services offered with no cost.
+  * AutoScaling
+  * Amazon VPC
+#### Note: Primary key = hash, Sort key = range in DynamoDB
+   
   
