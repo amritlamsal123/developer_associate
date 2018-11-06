@@ -40,6 +40,7 @@
   * Pause and resume objects uploads
   * Begin an upload before you know the final object size 
   * You can upload a file as it is being created
+  * Note: parts of multi-part upload will not be completed until the "complete" request has been called which puts all the parts of the file together. 
 #### Instance Metadata 
   * Instance metadata is data about your instance that you can use to configure or manage the running instance.
   * Anyone who can access the instance can view its metadata. Therefore, you should take suitable precautions to protect sensitive data (such as long-lived encryption keys). You should not store sensitive data, such as passwords, as user data.
@@ -58,3 +59,9 @@
 #### Retrieve Instance User Data
   * To retrieve user data from within a running instance, use the following URI:
   http://169.254.169.254/latest/user-data
+#### You have software on EC2 instance that needs to access both the private and public IP addresses of that instance. The best way for the software to get that information is
+  * Look it up in instance metadata.
+#### Note: "Resource" section in CloudFormation template is mandatory
+#### What is the function of a conditional write?
+  * A change to a DynamoDB attribute will only be written if that attribute's value has not changed since it was read.
+  
