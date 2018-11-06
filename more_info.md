@@ -30,3 +30,31 @@
     * Confirm the subscription
 #### What kind of message does SNS send to endpoint?
   * A JSON document with parameters like Message, Signature, Subject, Type
+#### 409 Conflict
+  * BucketNotEmpty --the bucket you tried to delete is not empty
+#### Visiblity Timeout = 0
+  * Makes the message immediately available
+#### Benefits of multi-part upload
+  * Improved throuput
+  * Quick recovery from any network issues
+  * Pause and resume objects uploads
+  * Begin an upload before you know the final object size 
+  * You can upload a file as it is being created
+#### Instance Metadata 
+  * Instance metadata is data about your instance that you can use to configure or manage the running instance.
+  * Anyone who can access the instance can view its metadata. Therefore, you should take suitable precautions to protect sensitive data (such as long-lived encryption keys). You should not store sensitive data, such as passwords, as user data.
+  * You can also use instance metadata to access user data that you specified when launching your instance.
+  * A request for a general metadata resource (the URI ends with a /) returns a list of available resources, or a 404 - Not Found HTTP error code if there is no such resource
+  * If you're throttled while accessing the instance metadata service, retry your query with an exponential backoff strategy.
+#### User Data
+  * User data is treated as opaque data: what you give is what you get back.
+  * User data is limited to 16 KB. 
+  * User data must be decoded when you retrieve it. The data is decoded when you retrieve it using instance metadata and the console.
+  * If you stop an instance, modify its user data, and start the instance, the updated user data is not executed when you start the instance
+#### Specify Instance User Data at Launch 
+  * You can specify user data when you launch the instance.
+#### Modify Instance User Data 
+  * You can modify user data for an instance in the stopped state if the root volume is an EBS volume. 
+#### Retrieve Instance User Data
+  * To retrieve user data from within a running instance, use the following URI:
+  http://169.254.169.254/latest/user-data
