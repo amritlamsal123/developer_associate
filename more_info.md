@@ -22,3 +22,11 @@
   * With the encryption key you provide as part of your request, Amazon S3 manages both the encryption, as it writes to disks, and decryption, when you access your objects. Therefore, you don't need to maintain any code to perform data encryption and decryption. The only thing you do is manage the encryption keys you provide.
   * Amazon S3 will reject any requests made over http when using SSE-C
   * If you lose the encryption key any GET request for an object without its encryption key will fail, and you lose the object.
+## Using Amazon SNS for System-to-System Messaging with an HTTP/S Endpoint as a Subscriber
+  * You can use Amazon SNS to send notification messages to one or more HTTP or HTTPS endpoints. When you subscribe an endpoint to a topic, you can publish a notification to the topic and Amazon SNS sends an HTTP POST request delivering the contents of the notification to the subscribed endpoint.
+  * Make sure that
+    * Your Endpoint is Ready to Process Amazon SNS Messages
+    * Subscribe the HTTP/HTTPS endpoint to the Amazon SNS topic
+    * Confirm the subscription
+#### What kind of message does SNS send to endpoint?
+  * A JSON document with parameters like Message, Signature, Subject, Type
