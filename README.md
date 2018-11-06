@@ -2,7 +2,8 @@
 #### SQS gurantees delivery but there can be duplicates
   * SQS requires you to implement your own application-level tracking, especially if your application uses multiple queues.
 #### Default visibility timeout for SQS queue in seconds?
-  * 30 seconds
+  * 30 seconds (The minimum is 0 seconds. The maximum is 12 hours)
+  * When a consumer receives and processes a message from a queue, the message remains in the queue. Amazon SQS doesn't automatically delete the message.Thus, the consumer must delete the message from the queue after receiving and processing it.
 #### How do I configure the maximum message size for Amazon SQS?
   * limit to a value between 1,024 bytes (1 KB), and 262,144 bytes (256 KB).
   * To send messages larger than 256 KB, use the Amazon SQS Extended Client Library for Java. 
