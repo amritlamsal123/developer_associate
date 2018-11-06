@@ -64,4 +64,6 @@
 #### Note: "Resource" section in CloudFormation template is mandatory
 #### What is the function of a conditional write?
   * A change to a DynamoDB attribute will only be written if that attribute's value has not changed since it was read.
+#### AWS provide SDK for
+  * Jave, .NET, Node.js, PHP, Python, Ruby, Go, C++, and AWS Mobile SDK
   
