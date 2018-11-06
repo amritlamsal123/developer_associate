@@ -66,4 +66,7 @@
   * A change to a DynamoDB attribute will only be written if that attribute's value has not changed since it was read.
 #### AWS provide SDK for
   * Jave, .NET, Node.js, PHP, Python, Ruby, Go, C++, and AWS Mobile SDK
+#### What HTTP response code indicates that an AWS API was successful.
+  * 200
+  
   
