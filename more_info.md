@@ -181,5 +181,6 @@
   * Signature
   * SignatureVersion
 #### SNS offers 10 million subscribers per topic, and 100,000 topics per account. To request a higher limit, contact AWS.
+#### AMIs can only be shared within a region. To make them available across region, you need to copy them across regions.
   
   
