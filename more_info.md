@@ -115,6 +115,15 @@
   * Signature
   * SigningCertURL
   * UnsubscribeURL
+#### Which feature can be used to restrict access to data in S3
+  * Set an S3 Bucket policy
+  * Set an S3 ACL on the bucket or the object
+#### Most secure approach for signing requests to the DynamoDB API 
+  * Request temporary security credentials  using web identity federation to sign the requests.
+#### Secure data at rest on EBS volume
+  * Use an Encrypted file system on top of EBS volume.
+#### To prevent web fonts from being blocked by the browser
+  * Configure the cdfonts bucket to allow cross-origin requests by creating a CORS configuration
   
   
   
