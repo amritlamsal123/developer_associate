@@ -82,5 +82,39 @@
   * AutoScaling
   * Amazon VPC
 #### Note: Primary key = hash, Sort key = range in DynamoDB
-   
+#### Recommendation to help ensure requests are evenly distributed across the webservers
+  * Re-configure the load-testing software to re-solve DNS for each web request
+  * Use a 3rd party load-testing service which offers globally-distributed test clients.
+#### DynamoDB limits can be raised by contacting AWS for:
+  * The number of tables per account
+  * The number of provisioned throughput units per accout.
+#### Leveraging SNS Mobile Push for push notification
+  * Call the CreatePlatformEndPoint API funtion to register multiple device tokens. 
+#### What type of block cipher does Amazon S3 offer for server side encryption?
+  * Advanced Encryption Standart (AES-256)
+#### Which of the following are correct statements with policy evaluation logic in AWS IAM?
+  * An explicit allow overrides default deny AS WELL AS an explicit deny overwrites all allows.
+  * By default, all requests are denied.
+#### Which statements about DynamoDB are true?
+  * DynamoDB uses optimistic concurrency control
+    * Optimistic locking is a strategy to ensure that the client-side item that you are updating(or deleting) is the same as the item in DynamoDB. If you use this strategy, then your database writes are protected from being overwritten by writes of others-and vice-versa.
+  * DynamoDB uses conditional writes for consistency
+    * Conditional Writes for PutItem, DeleteItem, and UpdateItem Operation succeeds only if the item attributes meet one or more expected conditions; otherwise it will return an error.
+#### ProvisionedThroughputExceededException
+  * You exceeded your maximum allowed provisioned throughput for a table or for one or more global secondary indexes. GSI consists of hashkey-mandatory(partitionkey) and rangekey-optional(sort-key).
+#### What happens, by default, when one of the resources in a CloudFormation stack cannot be created?
+  * Previously-created resources are deleted and the stack creation terminates.
+#### Which of the following are valid arguments for an SNS Public request?
+  * Type
+  * MessageId
+  * TopicArn
+  * Subject
+  * Message
+  * Timestamp
+  * SignatureVersion
+  * Signature
+  * SigningCertURL
+  * UnsubscribeURL
+  
+  
   
