@@ -124,6 +124,62 @@
   * Use an Encrypted file system on top of EBS volume.
 #### To prevent web fonts from being blocked by the browser
   * Configure the cdfonts bucket to allow cross-origin requests by creating a CORS configuration
-  
+#### Strong consistency is more expensive and uses more throuphput than eventually consistent reads.
+#### SNS Subscription request are possible by:
+  * HTTP/ HTTPS
+  * Email / Email-JSON
+  * SQS
+  * SMS
+#### Hourly log files in S3 format
+  * HH-DD-MM-YYYY-log_instanceID
+#### When using a large Scan Operation in DynamoDB, What technique can be used to minimize the impact of a scan on a table's provisioned throughput?
+  * Set a smaller page size for the scan
+    * a larger number of smaller scan or query operations would allow your other critical requests to succeed without throttling.
+#### Key-value stores
+  * S3
+  * DynamoDB
+  * ElastiCache
+#### In DynamoDB, What type of HTTP response codes indicate that a problem was found with the client request sent to the service?
+  * HTTP Status Code 400
+#### DynamoDB(ConditionExpression)
+  * Boolean Functions: ATTRIBUTE_EXIST, CONTAINS, & BEGINS_WITH
+  * Comparison Operators: =,<>,<,>,<=,>=,BETWEEN, & IN
+  * Logical Operators: NOT, AND, & OR
+#### API for DynamoDB table
+  * CreateTable
+  * UpdateTable
+  * DeleteTable
+  * DescribeTable
+  * ListTables
+#### What configuration does AWS provide to handle unsuccessful-processed messages in SQS?
+  * Dead letter queues
+    * You can use API or the console to configure dead letter queues, which are queues that receive message from other source queues.
+#### Note: SQS long-polling RecieveMessage calls are billed exactly the same as short-polling RecieveMessage calls.
+#### The protocol versions supported by SQS are:
+  * TLS 1.0
+  * TLS 1.1
+  * TLS 1.2
+#### Max length of topic name in SNS
+  * 256 characters
+#### Owners permission possible in SNS
+  * CreateTopic
+  * DeleteTopic
+  * ListTopics
+  * ListSubscriptionsByTopic
+  * SetTopicAttributes
+  * GetTopicAttributes
+  * AddPermission
+  * RemovePermission
+#### SQS consists of :
+  * MessageId
+  * Timestamp
+  * TopicArn
+  * Type
+  * UnsubscribeURL
+  * Message
+  * Subject
+  * Signature
+  * SignatureVersion
+#### SNS offers 10 million subscribers per topic, and 100,000 topics per account. To request a higher limit, contact AWS.
   
   
