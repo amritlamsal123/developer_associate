@@ -208,6 +208,33 @@
 #### What is the maximum limit of data that can be retrieved by a scan operation in DynamoDB?
   * 1 MB
     * The result set from a Scan is limited to 1 MB per call. 
-    
-  
+#### What can be used in DynamoDB as part of the Query API call to filter results based on the values of primary keys?
+  * Expressions
+    * You can specify an expression as part of the Query API call to filter results based on values of primary keys on a table using the KeyConditionExpression parameter. 
+#### Which function is used in CLoudformation to return the value corresponding to keys in a two-level map that is declared in the Mappings section?
+  * Fn::FindInMap
+#### Which function is used in Cloudformation to append a set of values into a single value?
+  * Fn::Join
+#### Retrieve an object from a set of objects
+  * Fn::Select
+#### {"Fn::Select":["1",["1","2","3","4"]]} returns
+  * 2
+#### {"Fn::Split":["|","a|b|c"]} returns
+  * ["a","b","c"]
+#### Which API calls can be used to get information about stacks based on a specific filter.
+  * ListStacks
+    *includes existing stacks and stacks that have been deleted(90 days period) 
+#### Resource is only mandatory field in Cloudformation
+#### error "ItemCollectionSizeLimitExceededException"
+  * Size of a group of items with the same partition key value has exceeded 10GB. 
+#### Note: Any objects uploaded prior to versioning will have the version ID as NULL.
+#### 409 Conflict
+  * Bucket Not Empty
+#### What is used in S3 to enable client web applications that are loaded in one domain to interact with resources in a different domain?
+  * CORS Configuration
+    * Cross-Origin resource sharing(CORS) defines a way for client web application that are loaded in one domain to interact with resources in a different domain. 
+      * Scenario 1: Suppose that you are hosting a website in an Amazon S3 bucket named website as described in Hosting a Static Website on Amazon S3. Your users load the website endpoint http://website.s3-website-us-east-1.amazonaws.com. Now you want to use JavaScript on the webpages that are stored in this bucket to be able to make authenticated GET and PUT requests against the same bucket by using the Amazon S3 API endpoint for the bucket, website.s3.amazonaws.com. A browser would normally block JavaScript from allowing those requests, but with CORS you can configure your bucket to explicitly enable cross-origin requests from website.s3-website-us-east-1.amazonaws.com.
+      * Scenario 2: Suppose that you want to host a web font from your S3 bucket. Again, browsers require a CORS check (also called a preflight check) for loading web fonts. You would configure the bucket that is hosting the web font to allow any origin to make these requests.
+
+
   
