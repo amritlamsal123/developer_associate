@@ -186,6 +186,25 @@
 #### What is the common pattern scenario's when it comes to the combination of SNS and SQS? 
   * fanout
     * One of the common design pattern is called "fanout". In this pattern, a message published to an SNS topic is distributed  to another number of SQS queue in parallel
+#### An IT admin has enabled long polling in their SQS queue. What must be done for long polling to be enabled in SQS?
+  * Set the ReceiveMessageWaitTimeSeconds property of the queue to 20 seconds. 
+    * Long polling helps reduce the cost of using Amazon SQS by eliminating the number of empty responses (when there are no messages available for a ReceiveMessage request) and false empty responses (when messages are available but aren't included in a response)
+#### Difference betn Long and Short polling
+  * By default, Amazon SQS uses short polling, querying only a subset of its servers (based on a weighted random distribution), to determine whether any messages are available for a response.
+    * Short polling occurs when the WaitTimeSeconds parameter of a ReceiveMessage request is set to 0  
+#### What can be used to deploy workers and deciders in Amazon SWF?
+  * Amazon EC2 instance
+  * Amazon Lambda
+  * On-premise machines
+#### Use case of SWF are:
+  * Media processing
+  * Business process automation
+  * Data analysis
+  * Migration to the cloud
+  * Batch processing
+#### What in AWS can be used to restrict access to SWF?
+  * IAM
+    * You can grant IAM users permission to access Amazon SWF. IAM users can only access the SWF domains and APIs that you specify.
     
   
   
