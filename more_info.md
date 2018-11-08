@@ -205,6 +205,9 @@
 #### What in AWS can be used to restrict access to SWF?
   * IAM
     * You can grant IAM users permission to access Amazon SWF. IAM users can only access the SWF domains and APIs that you specify.
+#### What is the maximum limit of data that can be retrieved by a scan operation in DynamoDB?
+  * 1 MB
+    * The result set from a Scan is limited to 1 MB per call. 
     
   
   
