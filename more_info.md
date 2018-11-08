@@ -257,7 +257,33 @@
   * Upload Object
   * Get Bucket
     * Write Object is not a S3 API operation
-    
+#### HTTP response code "300"
+  * AWS REST API call resulted in a redirection
+    * This class of status code indicates that further action needs to be taken by the user agent in order to fulfill the request.
+#### AWS Flow Framework
+  * Helps in developing SWF based applications.
+#### SWF Workers can run behind a firewall
+  * You do not have to configure your firewall to allow inbound requests. 
+#### In SWF, what is the maximum number of open activity tasks
+  * 1000
+#### Note: SWF workflows can be managed across 3 AZ
+  * doen't matter if single AZ fails
+#### How can you ensure maximum protection of preserved versions in S3?
+  * MFA Delete
+    * If you enable Versioning with MFA Delete on your S3 bucket, two forms of authentication are required to permanently delete a version of an object: your AWS account credentials and a valid six-digit code and serial number from authentication device in your physical possession
+#### Default setting of connection draining in ELB
+  * 300 seconds
+    * To ensure that CLB stops sending requests to instances that are de-registered or unhealthy, while keeping the existing connection open, use connection draining. 
+#### How many subnets can I create per VPC?
+  * 200
+#### Note: You cannot use all IP addresses assigned to a subnet. Amazon reserves first four IP addresses and last 1 IP address of every subnet for IP networking purpose.
+#### S3 Infrequent Access storage provide the same performance as standard storage
+#### 2 ways in which you can get data into S3-Standard IA?
+  * Put request by changing the x-amz-storage-class header
+  * Use lifecycle policies
+#### S3 is not suitable for server-side scripting. EC2 is recommended for website with server-side scripting and database interaction.
+#### API call for creating new item in DynamoDB
+  * PutItem
   
 
   
