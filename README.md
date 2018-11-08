@@ -269,6 +269,7 @@ Required: Yes
 #### Identity Providers and Federation
   * If you already manage user identities outside of AWS, you can use IAM identity providers instead of creating IAM users in your AWS account
   * To use an IdP, you create an IAM identity provider entity to establish a trust relationship between your AWS account and the IdP. IAM supports IdPs that are compatible with OpenID Connect (OIDC) or SAML 2.0 (Security Assertion Markup Language 2.0).
+
   
   
 
