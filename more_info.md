@@ -235,6 +235,29 @@
     * Cross-Origin resource sharing(CORS) defines a way for client web application that are loaded in one domain to interact with resources in a different domain. 
       * Scenario 1: Suppose that you are hosting a website in an Amazon S3 bucket named website as described in Hosting a Static Website on Amazon S3. Your users load the website endpoint http://website.s3-website-us-east-1.amazonaws.com. Now you want to use JavaScript on the webpages that are stored in this bucket to be able to make authenticated GET and PUT requests against the same bucket by using the Amazon S3 API endpoint for the bucket, website.s3.amazonaws.com. A browser would normally block JavaScript from allowing those requests, but with CORS you can configure your bucket to explicitly enable cross-origin requests from website.s3-website-us-east-1.amazonaws.com.
       * Scenario 2: Suppose that you want to host a web font from your S3 bucket. Again, browsers require a CORS check (also called a preflight check) for loading web fonts. You would configure the bucket that is hosting the web font to allow any origin to make these requests.
-
+#### Cloudformation automatically tags Amazon EBS volumes and Amazon EC2 instances with the name of the AWS CloudFormation stack they are part of. CloudFormation natively supports:
+  * Network ACL's
+  * RouteTables
+  * EC2
+#### In Cloudformation what is the limit to the number of parameters in the template:
+  * You can include up to 60 parameters and 60 outputs in a template.
+#### Benefits of SNS
+  * Instantaneous, push-based delivery (no polling)
+  * Simple APIs and easy integration with applications
+  * Flexible message delivery over multiple transport protocols
+  * Inexpensive, pay-as-you-go model with no up-front costs
+  * Web-based AWS Management Console offers the simplicity of a point-and-click interface
+#### error "403 forbidden"
+  * InvalidAccesKeyID
+#### Which feature of DynamoDB provides a time-ordered sequence of item-level changes made to data?
+  * DyanmoDB Streams
+#### There is no limit to size of table in DynamoDB. 
+#### S3 REST API operation:
+  * Put Object
+  * Upload Object
+  * Get Bucket
+    * Write Object is not a S3 API operation
+    
+  
 
   
