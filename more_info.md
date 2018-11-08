@@ -181,6 +181,11 @@
   * Signature
   * SignatureVersion
 #### SNS offers 10 million subscribers per topic, and 100,000 topics per account. To request a higher limit, contact AWS.
+  * Name, type and value must not be empty or null and the message body shouldn't be empty or null
 #### AMIs can only be shared within a region. To make them available across region, you need to copy them across regions.
+#### What is the common pattern scenario's when it comes to the combination of SNS and SQS? 
+  * fanout
+    * One of the common design pattern is called "fanout". In this pattern, a message published to an SNS topic is distributed  to another number of SQS queue in parallel
+    
   
   
